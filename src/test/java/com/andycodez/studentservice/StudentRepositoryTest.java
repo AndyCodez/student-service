@@ -19,7 +19,7 @@ public class StudentRepositoryTest {
     private StudentRepository studentRepository;
 
     @Autowired
-    TestEntityManager testEntityManager;
+    private TestEntityManager testEntityManager;
 
     @Test
     void testGetStudentByName_returnsStudentDetails() {
