@@ -1,5 +1,6 @@
 package com.andycodez.studentservice;
 
+import com.andycodez.studentservice.exceptions.StudentNotFoundException;
 import com.andycodez.studentservice.model.entities.Student;
 import com.andycodez.studentservice.model.repositories.StudentRepository;
 import com.andycodez.studentservice.services.StudentService;
@@ -39,5 +40,14 @@ public class StudentControllerTest {
                 .andExpect(jsonPath("id").value(1l))
                 .andExpect(jsonPath("name").value("Kairetu"))
                 .andExpect(jsonPath("grade").value(30));
+    }
+
+    @Test
+    void getNonExistedStudent_returnsStudentNotFoundException() throws Exception {
+        given(studentService.getStudentById(anyLong())).willThrow(StudentNotFoundException.class);
+
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/students/1");
+        mockMvc.perform(requestBuilder)
+                .andExpect(status().isNotFound());
     }
 }
