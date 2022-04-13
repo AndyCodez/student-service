@@ -37,7 +37,7 @@ public class StudentServiceTest {
 
     @Test
     void throwStudentNotFoundException_inCaseStudentMissing() {
-        Long missingId = 999L;
+        long missingId = 999L;
         Throwable throwable = catchThrowable(() -> this.studentService.getStudentById(missingId));
         then(throwable).isInstanceOf(StudentNotFoundException.class);
     }
