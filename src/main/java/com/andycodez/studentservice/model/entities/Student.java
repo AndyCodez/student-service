@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
@@ -14,8 +15,18 @@ import javax.persistence.Id;
 @Data
 public class Student {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     
     private String name;
+
+    private boolean active;
+
+    private int grade;
+
+    public Student(String name, boolean active, int grade) {
+        this.name = name;
+        this.active = active;
+        this.grade = grade;
+    }
 }
