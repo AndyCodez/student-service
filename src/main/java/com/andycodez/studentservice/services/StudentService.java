@@ -1,5 +1,6 @@
 package com.andycodez.studentservice.services;
 
+import com.andycodez.studentservice.exceptions.StudentNotFoundException;
 import com.andycodez.studentservice.model.entities.Student;
 import com.andycodez.studentservice.model.repositories.StudentRepository;
 import org.springframework.cache.annotation.Cacheable;
@@ -15,7 +16,7 @@ public class StudentService {
     }
 
     @Cacheable(cacheNames = "students")
-    public Student getStudentById(long id) {
-        return this.studentRepository.findById(id).orElse(null);
+    public Student getStudentById(long id) throws StudentNotFoundException {
+        return this.studentRepository.findById(id).orElseThrow(StudentNotFoundException::new);
     }
 }

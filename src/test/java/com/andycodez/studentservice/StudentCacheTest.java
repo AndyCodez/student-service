@@ -1,5 +1,6 @@
 package com.andycodez.studentservice;
 
+import com.andycodez.studentservice.exceptions.StudentNotFoundException;
 import com.andycodez.studentservice.model.entities.Student;
 import com.andycodez.studentservice.model.repositories.StudentRepository;
 import com.andycodez.studentservice.services.StudentService;
@@ -24,7 +25,7 @@ public class StudentCacheTest {
     private StudentRepository studentRepository;
 
     @Test
-    void getStudentById_forMultipleRequests_isRetrievedFromCache () {
+    void getStudentById_forMultipleRequests_isRetrievedFromCache () throws StudentNotFoundException {
         Long id = 123L;
         given(studentRepository.findById(id)).willReturn(Optional.of(new Student(id,"James",true, 80)));
 
