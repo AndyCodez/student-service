@@ -3,7 +3,6 @@ package com.andycodez.studentservice;
 import com.andycodez.studentservice.model.entities.Student;
 import com.andycodez.studentservice.model.repositories.StudentRepository;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
